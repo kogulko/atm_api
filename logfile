@@ -1,0 +1,2 @@
+2018-12-15 18:49:50.310 EET [8314] FATAL:  database files are incompatible with server
+2018-12-15 18:49:50.310 EET [8314] DETAIL:  The data directory was initialized by PostgreSQL version 10, which is not compatible with this version 11.1.
