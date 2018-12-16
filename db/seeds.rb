@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+#
+Banknote.create(face_value: 1, quantity: 50)
+Banknote.create(face_value: 2, quantity: 40)
+Banknote.create(face_value: 5, quantity: 30)
+Banknote.create(face_value: 10, quantity: 20)
+Banknote.create(face_value: 25, quantity: 10)
+Banknote.create(face_value: 50, quantity: 5)

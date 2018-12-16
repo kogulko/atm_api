@@ -5,4 +5,8 @@ class Banknote < ApplicationRecord
 
   validates :face_value, uniqueness: true
   validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  def self.total_sum
+    sum('face_value * quantity')
+  end
 end

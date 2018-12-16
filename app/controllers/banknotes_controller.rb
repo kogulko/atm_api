@@ -1,2 +1,0 @@
-class BanknotesController < ApplicationController
-end
