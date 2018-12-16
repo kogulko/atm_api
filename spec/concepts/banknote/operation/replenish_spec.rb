@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ATM::Replenish do
+RSpec.describe Atm::Replenish do
   let(:invalid_banknote) { { face_value: 15, quantity: 2.5 } }
   let(:valid_10_banknote) { { face_value: 10, quantity: 2 } }
   let(:another_valid_10_banknote) { { face_value: 10, quantity: 4 } }

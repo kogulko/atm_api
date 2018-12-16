@@ -260,7 +260,6 @@ DEPENDENCIES
   rspec-rails (~> 3.8)
   spring
   spring-watcher-listen (~> 2.0.0)
-  trailblazer
   trailblazer-rails
   tzinfo-data
 
