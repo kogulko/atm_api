@@ -48,9 +48,11 @@ RSpec.describe Atm::Withdraw do
 
       let(:amount) { 50 }
       it 'fails at the disbursement stage' do
-        assert_fail described_class, ctx(default_params) do |result|
-          assert_equal 'Something went wrong! Try next time', result[:log]
-        end
+        expect {
+          assert_fail described_class, ctx(default_params) do |result|
+            assert_equal 'Something went wrong! Try next time', result[:log]
+          end
+        }.to_not change(Banknote, :total_sum)
       end
     end
   end

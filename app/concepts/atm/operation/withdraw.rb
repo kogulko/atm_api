@@ -13,8 +13,9 @@ class Atm::Withdraw < Trailblazer::Operation
 
   step :check_available_banknotes!
   failure :no_banknotes!, fail_fast: true
-
-  step :withdraw_money!
+  step Rescue(ActiveRecord::RecordNotFound, ActiveRecord::RecordInvalid, handler: :operation_error!) {
+    step :withdraw_money!
+  }
   failure :operation_error!, fail_fast: true
 
   # Steps
@@ -47,8 +48,6 @@ class Atm::Withdraw < Trailblazer::Operation
       end
     end
     return true
-  rescue ActiveRecord::RecordNotFound, ActiveRecord::RecordInvalid  => e
-    return false
   end
 
   # Failures
@@ -65,7 +64,7 @@ class Atm::Withdraw < Trailblazer::Operation
     options[:log] = 'No banknotes to issue the required amount! Available banknotes: ' + available_banknotes.join(', ')
   end
 
-  def operation_error!(options)
+  def operation_error!(_exception, options)
     options[:log] = 'Something went wrong! Try next time'
   end
 end

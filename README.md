@@ -9,9 +9,9 @@ rails db:setup
 rails s
 ```
 ### API interaction
-API supports 2 methods:
-* replenish (for ATM refilling)
-* withdraw (for withdrawal)
+API supports 2 endpoints:
+* `atm/replenish` (for ATM refilling)
+* `atm/withdraw` (for withdrawal)
 
 They are avaialble through `POST` requests
 
