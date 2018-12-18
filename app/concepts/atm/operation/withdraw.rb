@@ -40,11 +40,15 @@ class Atm::Withdraw < Trailblazer::Operation
   end
 
   def withdraw_money!(options, model:, banknotes:, **)
-    banknotes.each do |face_value, needed_quantity|
-      return false unless banknote = model.find_by(face_value: face_value)
-      return false unless banknote.update(quantity: banknote.quantity - needed_quantity)
+    Banknote.transaction do
+      banknotes.each do |face_value, needed_quantity|
+        banknote = model.find_by!(face_value: face_value)
+        banknote.update!(quantity: banknote.quantity - needed_quantity)
+      end
     end
     return true
+  rescue ActiveRecord::RecordNotFound, ActiveRecord::RecordInvalid  => e
+    return false
   end
 
   # Failures

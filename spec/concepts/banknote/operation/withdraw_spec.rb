@@ -43,7 +43,7 @@ RSpec.describe Atm::Withdraw do
     context 'with system error' do
       before do
         create(:banknote, face_value: 50, quantity: 10)
-        expect_any_instance_of(Banknote).to receive(:update).and_return(false)
+        expect_any_instance_of(Banknote).to receive(:update!).and_raise(ActiveRecord::RecordInvalid)
       end
 
       let(:amount) { 50 }
