@@ -34,14 +34,21 @@ RSpec.describe Banknote, type: :model do
         subject.face_value = invalid_face_value
       end
 
-      it 'invalidate banknote with invalid quantity' do
+      it 'invalidates banknote with negative quantity' do
+        subject.quantity = negative_quantity
+        expect(subject).to be_invalid
+      end
 
+      it 'invalidates banknote with fractions quantity' do
+        subject.quantity = fractional_quantity
+        expect(subject).to be_invalid
       end
     end
 
     context 'with valid data' do
-      it 'validate banknote with invalid quantity' do
-
+      it 'validates banknote with valid data' do
+        subject.assign_attributes(face_value: valid_face_value, quantity: valid_quantity)
+        expect(subject).to be_valid
       end
     end
   end
