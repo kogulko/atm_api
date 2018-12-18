@@ -3,6 +3,10 @@ class Banknote < ApplicationRecord
 
   enum face_value: Hash[AVAILABLE_FACE_VALUES.collect { |item| [item.to_s, item] } ]
 
+  default_scope { order(face_value: :desc) }
+  scope :in_stock, lambda { |face_value = AVAILABLE_FACE_VALUES.max| where('quantity > 0 AND face_value <= ?', face_value) }
+
+
   validates :face_value, uniqueness: true
   validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 

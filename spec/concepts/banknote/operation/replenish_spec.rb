@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Atm::Replenish do
-  let(:invalid_banknote) { { face_value: 15, quantity: 2.5 } }
-  let(:valid_10_banknote) { { face_value: 10, quantity: 2 } }
-  let(:another_valid_10_banknote) { { face_value: 10, quantity: 4 } }
-  let(:valid_5_banknote) { { face_value: 5, quantity: 6 } }
-  let(:valid_2_banknote) { { face_value: 2, quantity: 3 } }
+  let(:invalid_banknote) { banknote_hash(15, 2.5) }
+  let(:valid_10_banknote) { banknote_hash(10, 2) }
+  let(:another_valid_10_banknote) { banknote_hash(10, 4) }
+  let(:valid_5_banknote) { banknote_hash(5, 6) }
+  let(:valid_2_banknote) { banknote_hash(2, 3) }
 
   describe 'validation' do
     it 'fails with invalid banknotes' do

@@ -1,15 +1,23 @@
-require "dry/validation"
+require 'dry/validation'
 
 class Atm::Replenish < Trailblazer::Operation
   extend Contract::DSL
 
   step :model!
+
   contract :params, ParamsSchema
   step Contract::Validate( name: :params, key: :banknotes )
+  failure ->(options, **) { options[:log] = options['result.contract.params'].errors }, fail_fast: true
+
   success :add_banknotes!
+  success ->(options, **) { options[:total_sum] = Banknote.total_sum }
 
   def model!(options)
     options['model'] = Banknote
+  end
+
+  def log_error!(options)
+    options[:log] = options['result.contract.params'].errors
   end
 
   def add_banknotes!(options, params:, model:, **)

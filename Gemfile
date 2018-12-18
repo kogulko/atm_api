@@ -6,6 +6,7 @@ ruby '2.4.4'
 gem 'dry-validation'
 gem 'reform-rails'
 gem 'reform'
+gem 'trailblazer-test'
 gem 'trailblazer-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

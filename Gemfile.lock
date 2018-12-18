@@ -109,6 +109,7 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hashie (3.6.0)
     hirb (0.7.3)
     i18n (1.2.0)
       concurrent-ruby (~> 1.0)
@@ -232,6 +233,8 @@ GEM
       railties (>= 4.0.0)
       trailblazer (~> 2.0.0)
       trailblazer-loader (>= 0.1.0)
+    trailblazer-test (0.1.0)
+      hashie
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uber (0.1.0)
@@ -261,6 +264,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   trailblazer-rails
+  trailblazer-test
   tzinfo-data
 
 RUBY VERSION
